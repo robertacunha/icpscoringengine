@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="ICP scoring and lead prioritisation engine. Built by Roberta Cunha.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Big+Shoulders+Display:wght@900&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 /* Layout: company profile rail left (the ICP), ranked accounts right, priority grid in the hero; detail opens under each row */
 :root{
@@ -45,24 +45,29 @@ button,select,input,textarea{font:inherit;color:inherit}
 .mode{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--brand);color:var(--brand);background:transparent;border-radius:999px;padding:6px 14px;font-family:var(--f-num);font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .mode svg{width:15px;height:15px}
 
-h1{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-size:clamp(52px,8vw,104px);line-height:.88;letter-spacing:0;margin:0;text-wrap:balance;font-weight:900;text-transform:uppercase}
+h1{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:clamp(40px,6.4vw,78px);line-height:1;letter-spacing:-.025em;margin:0;text-wrap:balance;font-weight:800}
 h1 span{color:var(--brand)}
-.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;padding-block:12px 4px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;padding-block:12px 4px}
+.col{display:grid;gap:16px;align-content:start;min-width:0}
 .hero-l{display:grid;gap:16px;min-width:0}
 .lead{font-size:17px;line-height:1.5;margin:0;max-width:48ch}
 .sub{color:var(--mute);margin:0;max-width:60ch}
 .sub b{color:var(--ink);font-weight:600}
 .facts{display:flex;flex-wrap:wrap;gap:6px}
 .facts span{font-family:var(--f-num);font-size:11px;letter-spacing:.04em;padding:4px 9px;border-radius:6px;background:var(--brand-soft);color:var(--brand)}
-.gridcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;min-width:0;width:100%;max-width:340px;justify-self:end}
+.gridcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:16px;min-width:0}
+.gc-text{display:grid;gap:12px;align-content:start}
+.gc-text h2{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.015em;margin:0}
+
 .gridcard svg{width:100%;height:auto;display:block}
-.gridcard text{font-family:var(--f-num);font-size:10px;fill:var(--mute)}
-.gridcard .ql{font-family:var(--f-body);font-size:11px;font-weight:700;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-opacity:.7}
+.gridcard text{font-family:var(--f-num);font-size:11px;fill:var(--mute)}
+.gridcard .ql{font-family:var(--f-body);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-opacity:.7}
 .gridcard .zone{fill-opacity:.1}
 .gridcard .thr{stroke:var(--line);stroke-dasharray:3 3}
 .gridcard .axis{stroke:var(--mute);stroke-width:1}
 .gridcard circle{stroke:var(--surface);stroke-width:1.5;cursor:pointer}
-.keys{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px}
+.keys{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 14px;font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:760px){.keys{grid-template-columns:1fr 1fr}}
 .keys div{display:grid;grid-template-columns:10px minmax(0,1fr);gap:2px 7px;align-items:baseline}
 .keys i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .keys b{font-weight:600}
@@ -83,7 +88,7 @@ h1 span{color:var(--brand)}
 .rail{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:18px}
 .rail section{display:grid;gap:10px}
 .rail section+section{border-top:1px solid var(--line);padding-top:16px}
-.rail h2{font-family:var(--f-display);font-size:16px;margin:0}
+.rail h2{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.015em;margin:0}
 .fld{display:grid;gap:4px}
 .fld input,.fld select,.fld textarea{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);width:100%}
 .factor{display:grid;gap:8px;padding:10px;border:1px solid var(--line);border-radius:10px}
@@ -153,7 +158,7 @@ textarea{font-family:var(--f-num);font-size:12px;min-height:150px}
 footer{text-align:center;color:var(--mute);font-size:12px}
 
 @media (max-width:1000px){.main{grid-template-columns:1fr}.row{grid-template-columns:96px minmax(0,1fr) 100px}.firmo,.row .tags{grid-column:2/-1}.det{padding-left:16px}.dgrid{grid-template-columns:1fr}}
-@media (max-width:860px){.hero{grid-template-columns:1fr;gap:20px}.gridcard{justify-self:start}}
+@media (max-width:860px){.hero{gap:20px}}
 @media (max-width:560px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.search{margin-left:0;width:100%}.two,.checks,.sigs{grid-template-columns:1fr}.row{grid-template-columns:1fr}.firmo,.row .tags{grid-column:auto}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -173,11 +178,6 @@ footer{text-align:center;color:var(--mute);font-size:12px}
       <p class="lead">Every account gets two scores out of 100: how well it fits the ICP, and how strong its buying signals are right now.</p>
       <p class="sub" id="profile-line"></p>
       <div class="facts"><span>Account fit</span><span>Buying group</span><span>Time-weighted intent</span></div>
-    </div>
-    <div class="gridcard">
-      <div class="lbl">Priority grid · fit against intent</div>
-      <svg id="pgrid" viewBox="0 0 244 196" role="img" aria-label="Accounts plotted by fit score and intent score"></svg>
-      <div class="keys" id="keys"></div>
     </div>
   </section>
 
@@ -213,12 +213,11 @@ footer{text-align:center;color:var(--mute);font-size:12px}
         <div id="sigtable" class="note" style="display:grid;gap:4px"></div>
       </section>
       <section>
-        <div class="lbl">Saved setup</div>
-        <div class="note" id="save-note"></div>
         <button type="button" class="linkbtn" id="b-clear">Reset profile and remove my accounts</button>
       </section>
     </aside>
 
+    <div class="col">
     <div class="board">
       <div class="bar" id="filters">
         <button class="pill on" type="button" data-f="all">All</button>
@@ -233,8 +232,17 @@ footer{text-align:center;color:var(--mute);font-size:12px}
       <div id="list"></div>
       <div class="legend"><span><span class="t f">Blue</span> funding</span><span><span class="t g">Green</span> strong buying signal</span><span><span class="t c">Orange</span> engagement</span><span><span class="t old">Grey</span> expired</span></div>
     </div>
+      <div class="gridcard">
+        <div class="gc-text">
+          <h2>Priority grid</h2>
+          <p class="note">Each dot is a qualified account, placed by its fit and intent score. Click a dot to open the account.</p>
+        </div>
+        <svg id="pgrid" viewBox="0 0 600 270" role="img" aria-label="Accounts plotted by fit score and intent score"></svg>
+        <div class="keys" id="keys"></div>
+      </div>
+    </div>
+
   </div>
-  <footer>Example setup with fictional fashion brands, for demonstration. Built by Roberta Cunha.</footer>
 </div>
 
 <dialog id="d-add"><form id="f-add">
@@ -408,20 +416,20 @@ function detail(a,r){
     '<div class="dgrid">'+fitBox+ppl+sig+'</div>'+(a.sample?'':'<div><button type="button" class="btn" data-del="'+esc(a.name)+'">Remove account</button></div>')+'</div>';
 }
 function drawGrid(rows){
-  var X0=26,X1=238,Y0=10,Y1=170,sx=function(v){return X0+(X1-X0)*v/100},sy=function(v){return Y1-(Y1-Y0)*v/100};
+  var X0=34,X1=592,Y0=8,Y1=240,PAD=26,sx=function(v){return X0+PAD+(X1-X0-2*PAD)*v/100},sy=function(v){return Y1-PAD-(Y1-Y0-2*PAD)*v/100};
   var fx=sx(FIT_T),iy=sy(INT_T),g='';
   g+='<rect class="zone" x="'+fx+'" y="'+Y0+'" width="'+(X1-fx)+'" height="'+(iy-Y0)+'" style="fill:var(--hot)"/>';
   g+='<rect class="zone" x="'+X0+'" y="'+Y0+'" width="'+(fx-X0)+'" height="'+(iy-Y0)+'" style="fill:var(--accent)"/>';
   g+='<rect class="zone" x="'+fx+'" y="'+iy+'" width="'+(X1-fx)+'" height="'+(Y1-iy)+'" style="fill:var(--brand)"/>';
   g+='<rect class="zone" x="'+X0+'" y="'+iy+'" width="'+(fx-X0)+'" height="'+(Y1-iy)+'" style="fill:var(--cold)"/>';
   g+='<line class="axis" x1="'+X0+'" y1="'+Y1+'" x2="'+X1+'" y2="'+Y1+'"/><line class="axis" x1="'+X0+'" y1="'+Y0+'" x2="'+X0+'" y2="'+Y1+'"/>';
-  g+='<text x="'+fx+'" y="'+(Y1+11)+'" text-anchor="middle">'+FIT_T+'</text><text x="'+(X0-4)+'" y="'+(iy+3)+'" text-anchor="end">'+INT_T+'</text>';
-  g+='<text x="'+((X0+X1)/2)+'" y="'+(Y1+23)+'" text-anchor="middle">Fit →</text><text transform="translate(9 '+((Y0+Y1)/2)+') rotate(-90)" text-anchor="middle">Intent →</text>';
-  g+='<text class="ql" x="'+(fx+4)+'" y="'+(Y0+13)+'" style="fill:var(--hot)">Act now</text>';
-  g+='<text class="ql" x="'+(X0+5)+'" y="'+(Y0+13)+'" style="fill:var(--accent)">Qualify</text>';
-  g+='<text class="ql" x="'+(fx+5)+'" y="'+(Y1-6)+'" style="fill:var(--brand)">Nurture</text>';
-  g+='<text class="ql" x="'+(X0+5)+'" y="'+(Y1-6)+'" style="fill:var(--cold)">Hold</text>';
-  rows.filter(function(x){return x.r.tier!=="out"}).forEach(function(x){g+='<circle cx="'+sx(x.r.fit).toFixed(1)+'" cy="'+sy(x.r.intent).toFixed(1)+'" r="5" style="fill:'+TIERS[x.r.tier].c+'" data-id="'+esc(x.a.name)+'"><title>'+esc(x.a.name)+': fit '+x.r.fit+', intent '+x.r.intent+'</title></circle>'});
+  g+='<text x="'+fx+'" y="'+(Y1+11)+'" text-anchor="middle">'+FIT_T+'</text><text x="'+(X0-5)+'" y="'+(iy+3)+'" text-anchor="end">'+INT_T+'</text>';
+  g+='<text x="'+((X0+X1)/2)+'" y="'+(Y1+26)+'" text-anchor="middle">Fit →</text><text transform="translate(9 '+((Y0+Y1)/2)+') rotate(-90)" text-anchor="middle">Intent →</text>';
+  g+='<text class="ql" x="'+(fx+8)+'" y="'+(Y0+20)+'" style="fill:var(--hot)">Act now</text>';
+  g+='<text class="ql" x="'+(X0+8)+'" y="'+(Y0+20)+'" style="fill:var(--accent)">Qualify</text>';
+  g+='<text class="ql" x="'+(fx+8)+'" y="'+(Y1-10)+'" style="fill:var(--brand)">Nurture</text>';
+  g+='<text class="ql" x="'+(X0+8)+'" y="'+(Y1-10)+'" style="fill:var(--cold)">Hold</text>';
+  rows.filter(function(x){return x.r.tier!=="out"}).forEach(function(x){g+='<circle cx="'+sx(x.r.fit).toFixed(1)+'" cy="'+sy(x.r.intent).toFixed(1)+'" r="7" style="fill:'+TIERS[x.r.tier].c+'" data-id="'+esc(x.a.name)+'"><title>'+esc(x.a.name)+': fit '+x.r.fit+', intent '+x.r.intent+'</title></circle>'});
   document.getElementById("pgrid").innerHTML=g;
   document.getElementById("keys").innerHTML=["act","contact","qualify","nurture","hold"].map(function(t){return'<div><i style="background:'+TIERS[t].c+'"></i><b>'+TIERS[t].n+'</b><small>'+TIERS[t].s+'</small></div>'}).join("");
 }
@@ -505,7 +513,7 @@ var tt;function toast(m){var t=document.getElementById("toast");t.textContent=m;
 /* saving */
 var KEY="ise-state-v3",storeOk=true;
 function save(){try{localStorage.setItem(KEY,JSON.stringify({p:P,mine:accounts.filter(function(a){return!a.sample})}));storeOk=true}catch(e){storeOk=false}noteSave()}
-function noteSave(){var n=accounts.filter(function(a){return!a.sample}).length;document.getElementById("save-note").textContent=storeOk?"Your company profile"+(n?" and "+n+" account"+(n>1?"s are":" is"):" is")+" saved in this browser.":"This browser is blocking storage, so changes clear when you close the page. Use Copy CSV to keep your accounts."}
+function noteSave(){if(!document.getElementById("save-note"))return;var n=accounts.filter(function(a){return!a.sample}).length;document.getElementById("save-note").textContent=storeOk?"Your company profile"+(n?" and "+n+" account"+(n>1?"s are":" is"):" is")+" saved in this browser.":"This browser is blocking storage, so changes clear when you close the page. Use Copy CSV to keep your accounts."}
 function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||"null");if(!d)return;if(d.p&&d.p.vals&&d.p.w){P=Object.assign(clone(DEFAULT),d.p);FKEYS.forEach(function(k){P.vals[k]=Object.assign({},DEFAULT.vals[k],d.p.vals[k]||{})});P.roles=Object.assign({},DEFAULT.roles,d.p.roles||{})}
   (d.mine||[]).forEach(function(a){if(a&&a.name){a.sample=false;a.contacts=a.contacts||[];a.signals=a.signals||[];a.flags=a.flags||[];accounts=accounts.filter(function(x){return x.name.toLowerCase()!==a.name.toLowerCase()});accounts.push(a)}})}catch(e){storeOk=false}}
 document.getElementById("b-clear").onclick=function(){var b=this;if(b.dataset.armed){P=clone(DEFAULT);accounts=samples.slice();open=null;try{localStorage.removeItem(KEY)}catch(e){}b.dataset.armed="";b.textContent="Reset profile and remove my accounts";renderRail();profileLine();render();noteSave();toast("Profile reset and your accounts removed")}else{b.dataset.armed="1";b.textContent="Click again to confirm";setTimeout(function(){b.dataset.armed="";b.textContent="Reset profile and remove my accounts"},4000)}};
